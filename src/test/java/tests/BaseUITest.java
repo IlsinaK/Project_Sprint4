@@ -1,5 +1,6 @@
 package tests;
 
+import org.example.pageobject.MainPage;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -14,13 +15,15 @@ public class BaseUITest {
     WebDriver driver;
     @Before
     public void startUp() {
-        initChrome();
+        initFireFox();
        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+        MainPage mainPage = new MainPage(driver);
+        mainPage.openMainPage();
     }
 
     @After
     public void tearDown(){
+
         driver.quit();
     }
 

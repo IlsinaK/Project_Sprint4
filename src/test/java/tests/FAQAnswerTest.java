@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -26,14 +27,14 @@ public class FAQAnswerTest extends BaseUITest {
     @Parameterized.Parameters
     public static Collection<Object[]> faqData() {
         return Arrays.asList(new Object[][]{
-                {HOW_MUCH_COSTS_QUESTION, HOW_MUCH_COSTS_ANSWER},
-                {SEVERAL_SCOOTERS, SEVERAL_SCOOTERS_ANSWER},
-                {RENTAL_TIME, RENTAL_TIME_ANSWER},
-                {ORDER_TODAY, ORDER_TODAY_ANSWER},
-                {CHANGE_RENTAL_TIME, CHANGE_RENTAL_TIME_ANSWER},
-                {CHARGER, CHARGER_ANSWER},
-                {ORDER_CANCELLATION, ORDER_CANCELLATION_ANSWER},
-                {DELIVERY_MKAD, DELIVERY_MKAD_ANSWER}
+                {howMuchCosts, howMuchCostsAnswer},
+                {severalScooters, severalScootersAnswer},
+                {rentalTime, rentalTimeAnswer},
+                {orderToday, orderTodayAnswer},
+                {changeRentalTime, changeRentalTimeAnswer},
+                {charger, chargerAnswer},
+                {orderCancellation, orderCancellationAnswer},
+                {deliveryMkad, deliveryMkadAnswer}
         });
     }
 
@@ -48,9 +49,5 @@ public class FAQAnswerTest extends BaseUITest {
         String actualAnswer = mainPage.getFAQAnswer(questionMessage);
         Assert.assertEquals(expectedAnswer, actualAnswer);
     }
-
-    @After
-    public void tearDown() {
-            driver.quit();
-    }
 }
+
