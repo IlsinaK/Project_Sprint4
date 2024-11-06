@@ -46,7 +46,7 @@ public class FAQAnswerTest extends BaseUITest {
         mainPage.closeCookieBannerButton();
         mainPage.clickFAQQuestion(questionMessage);
 
-        String actualAnswer = mainPage.getFAQAnswer(questionMessage);
+        String actualAnswer = mainPage.getFAQAnswer(expectedAnswer);
         Assert.assertEquals(expectedAnswer, actualAnswer);
     }
 }

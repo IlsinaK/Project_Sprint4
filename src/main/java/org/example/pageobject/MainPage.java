@@ -16,7 +16,7 @@ public class MainPage {
     private By orderMiddleButton = By.xpath(".//button[contains(@class, 'Button_Middle__1CSJM')]"); // нижняя кнопка Заказать
     private By closeCookieBannerButton = By.xpath(".//button[contains(@id, 'rcc-confirm-button')]"); // кнопка закрыть Cookie
     private static final String faqQuestionPattern = ".//div[contains(@id, 'accordion__heading') and contains(text(), '%s')]";
-    private static final String faqAnswerPattern = ".//div[contains(@class, 'accordion__panel') and contains(text(), '%s')]";
+    private static final String faqAnswerPattern = ".//div[contains(@class, 'accordion__panel')]/p[contains(text(), '%s')]";
     public static final String howMuchCosts = "Сколько это стоит? И как оплатить?";
     public static final String severalScooters = "Хочу сразу несколько самокатов! Так можно?";
     public static final String rentalTime = "Как рассчитывается время аренды?";
@@ -24,7 +24,7 @@ public class MainPage {
     public static final String changeRentalTime = "Можно ли продлить заказ или вернуть самокат раньше?";
     public static final String charger = "Вы привозите зарядку вместе с самокатом?";
     public static final String orderCancellation = "Можно ли отменить заказ?";
-    public static final String deliveryMkad = "Я живу за МКАДом, привезёте?";
+    public static final String deliveryMkad = "Я жизу за МКАДом, привезёте?";
 
 
     public static final String howMuchCostsAnswer = "Сутки — 400 рублей. Оплата курьеру — наличными или картой.";
@@ -69,15 +69,11 @@ public class MainPage {
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public String getFAQAnswer(String questionMessage) {
-        String answerLocator = String.format(faqAnswerPattern, questionMessage);
+    public String getFAQAnswer(String answerMessage) {
+        String answerLocator = String.format(faqAnswerPattern, answerMessage);
         WebDriverWait wait = new WebDriverWait(driver, 30);
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(answerLocator)));
-
-        WebElement answerElement = driver.findElement(By.xpath(answerLocator));
+        WebElement answerElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(answerLocator)));
         return answerElement.getText();
-
     }
 
 
