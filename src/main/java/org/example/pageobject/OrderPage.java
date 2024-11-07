@@ -22,14 +22,14 @@ public class OrderPage {
     private By deliveryDateInput = By.xpath(".//input[@placeholder= '* Когда привезти самокат']"); //календарь
     private By getDeliveryDateDataPicker = By.xpath(".//div[@tabindex and contains(@class, 'react-datepicker__day')]"); //выбор даты
     private By isPageForWhom = By.xpath(".//div[@id ='root']"); // страница Для кого самокат
-    public static final String orderPageUrl = "https://qa-scooter.praktikum-services.ru/order"; //url страницы ввода данных для заказа
+    public static final String ORDER_PAGE_URL = "https://qa-scooter.praktikum-services.ru/order"; //url страницы ввода данных для заказа
     private By rentalPeriod   = By.xpath (".//div[@class = 'Dropdown-root']") ; // срок аренды
     private By  colorBlackInput  = By.xpath (".//input[@id = 'black']"); //  цвет самоката черный жемчуг
     private By  commentInput = By.xpath (".//input[@placeholder = 'Комментарий для курьера']"); //поле 'Комментарий для курьера'
     private By  orderMiddleButton = By.xpath (".//button[contains(@class, 'Middle__1CSJM') and contains(text(), 'Заказать')]"); // нижняя кнопка «Заказать»
     private By rentalDays   = By.xpath (".//div[contains(@class, 'Dropdown-menu')]"); //выбор дней аренды
     private By yesButton  = By.xpath(".//button[contains(@class, 'Middle__1CSJM') and text()='Да']"); // кнопка "Да" для подтверждения заказа
-    private By  isSavedOrder= By.xpath(".//div[contains(@class, 'App_App__15LM-')]"); //окошко заказ оформлен
+    private By  isSavedOrder= By.xpath(".//button[contains(@class, 'Button_Middle__1CSJM') and text() = 'Посмотреть статус']"); //окошко заказ оформлен
     private By colorGrayInput = By.xpath (".//input[@id = 'grey']");  // цвет самоката серая безысходность
 
 
@@ -40,7 +40,7 @@ public class OrderPage {
     }
 
     public OrderPage openOrderPage(){
-    driver.get(orderPageUrl);
+    driver.get(ORDER_PAGE_URL);
       return this;
     }
 
@@ -73,32 +73,25 @@ public class OrderPage {
         stationInput.click();
         wait = new WebDriverWait(driver, 10, TimeUnit.SECONDS.ordinal());
          stationInput.sendKeys(stationNameValue);
-
-
-
-        WebElement stationOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class, 'select-search')]//div[text()='" + stationNameValue + "']")));
+         WebElement stationOption = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class, 'select-search')]//div[text()='" + stationNameValue + "']")));
         stationOption.click();
 
     }
 
     public void setPhoneLineInput(String phoneLineValue) {
-
         WebElement phoneLineWebElement = wait.until(ExpectedConditions.visibilityOfElementLocated(phoneLineInput));
         phoneLineWebElement.clear();
         phoneLineWebElement.sendKeys(phoneLineValue);
     }
 
 
-
     public void nextButtonClick() {
-
         wait.until(ExpectedConditions.elementToBeClickable(nextButton));
         driver.findElement(nextButton).click();
     }
 
 
     public boolean getIsPageForWhom(){
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(isPageForWhom));
         return driver.findElement(isPageForWhom).isDisplayed();
     }
@@ -116,33 +109,23 @@ public class OrderPage {
     public void  rentalPeriod(String rentalPeriod){
         WebElement rentalPeriodWebElement = driver.findElement(this.rentalPeriod);
         rentalPeriodWebElement.click();
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(rentalDays));
-
         List<WebElement> daysOptions = driver.findElements(rentalDays);
-
-
         WebElement firstDay = daysOptions.get(0);
         firstDay.click();
-
-
     }
 
 
     public void selectColor(String color) {
         String colorLowerCase = color.toLowerCase();
-
         if (colorLowerCase.equals("чёрный жемчуг")) {
             wait.until(ExpectedConditions.elementToBeClickable(colorBlackInput)).click();
         } else if (colorLowerCase.equals("серая безысходность")) {
             wait.until(ExpectedConditions.elementToBeClickable(colorGrayInput)).click();
         }
     }
-
     public void setCommentInput(String commentValue){
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(commentInput));
-
         WebElement commentWebElement = driver.findElement(commentInput);
         commentWebElement.clear();
         driver.findElement(commentInput).sendKeys(commentValue);
@@ -150,18 +133,15 @@ public class OrderPage {
 
 
     public void orderMiddleButtonClick(){
-
         wait.until(ExpectedConditions.elementToBeClickable(orderMiddleButton)).click();
     }
 
     public void yesButtonClick() {
-
-        wait.until(ExpectedConditions.elementToBeClickable(yesButton));
+       wait.until(ExpectedConditions.elementToBeClickable(yesButton));
         driver.findElement(yesButton).click();
     }
 
     public boolean getIsSavedOrder(){
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(isSavedOrder));
         return driver.findElement(isSavedOrder).isDisplayed();
     }

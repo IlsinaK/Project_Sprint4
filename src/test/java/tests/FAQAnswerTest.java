@@ -1,7 +1,6 @@
 package tests;
 
 import org.example.pageobject.MainPage;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,14 +26,14 @@ public class FAQAnswerTest extends BaseUITest {
     @Parameterized.Parameters
     public static Collection<Object[]> faqData() {
         return Arrays.asList(new Object[][]{
-                {howMuchCosts, howMuchCostsAnswer},
-                {severalScooters, severalScootersAnswer},
-                {rentalTime, rentalTimeAnswer},
-                {orderToday, orderTodayAnswer},
-                {changeRentalTime, changeRentalTimeAnswer},
-                {charger, chargerAnswer},
-                {orderCancellation, orderCancellationAnswer},
-                {deliveryMkad, deliveryMkadAnswer}
+                {HOW_MUCH_COSTS, HOW_MUCH_COSTS_ANSWER},
+                {SEVERAL_SCOOTERS, SEVERAL_SCOOTERS_ANSWER},
+                {RENTAL_TIME, RENTAL_TIME_ANSWER},
+                {ORDER_TODAY, ORDER_TODAY_ANSWER},
+                {CHANGE_RENTAL_TIME, CHANGE_RENTAL_TIME_ANSWER},
+                {CHARGER, CHARGER_ANSWER},
+                {ORDER_CANCELLATION, ORDER_CANCELLATION_ANSWER},
+                {DELIVERY_MKAD, DELIVERY_MKAD_ANSWER}
         });
     }
 

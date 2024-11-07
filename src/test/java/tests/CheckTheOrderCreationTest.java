@@ -51,7 +51,6 @@ public class CheckTheOrderCreationTest extends BaseUITest {
     @Test
     public void userDataTest() {
         MainPage mainPage = new MainPage(driver);
-
         mainPage.orderTopButtonClick();
         OrderPage orderPage = new OrderPage(driver);
 
@@ -82,14 +81,10 @@ public class CheckTheOrderCreationTest extends BaseUITest {
     @Test
     public void orderMiddleButtonTest(){
         MainPage mainPage = new MainPage(driver);
-
         OrderPage orderPage = new OrderPage(driver);
-
         mainPage.orderMiddleButtonClick();
         boolean isPageForWhom = orderPage.getIsPageForWhom();
         Assert.assertTrue(isPageForWhom);
     }
-
-
 }
 
