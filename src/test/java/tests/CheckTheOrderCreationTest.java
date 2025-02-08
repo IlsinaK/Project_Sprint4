@@ -63,7 +63,7 @@ public class CheckTheOrderCreationTest extends BaseUITest {
         orderPage.nextButtonClick();
 
 
-        //String deliveryData = LocalDate.now().plusDays(1).toString();
+    
         System.out.println("delyveryData = " + deliveryData);
         orderPage.selectDeliveryDate(deliveryData);
         orderPage.setCommentInput(comment);
